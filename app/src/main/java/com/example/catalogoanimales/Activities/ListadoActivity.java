@@ -129,13 +129,17 @@ public class ListadoActivity extends AppCompatActivity implements AnimalAdapterA
                     .setPositiveButton("Eliminar", (dialog, which) -> {
                         listaAnimales.remove(position);
                         adapter.notifyItemRemoved(position);
+                        for (int i = position; i < listaAnimales.size(); i++)
+                        {
+                            adapter.notifyItemChanged(i);
+                        }
                         Toast.makeText(ListadoActivity.this, "Animal eliminado", Toast.LENGTH_SHORT).show();
                     })
                     .setNegativeButton("Cancelar", null)
                     .show();
         });
-
     }
+
 
     private void configurarFab()
     {
@@ -293,8 +297,9 @@ public class ListadoActivity extends AppCompatActivity implements AnimalAdapterA
         intent.putExtra("pesoPromedio", animal.getPesoPromedio());
         intent.putExtra("estadoConservacion", animal.getEstadoConservacion());
         intent.putExtra("tipo", animal.getTipo());
-
         intent.putExtra("informacionAdicional", animal.getInformacionAdicional());
+
+        intent.putExtra("posicion", position);
 
         if (animal instanceof Mamifero)
         {

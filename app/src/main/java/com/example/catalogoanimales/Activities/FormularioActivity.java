@@ -18,19 +18,18 @@ import com.example.catalogoanimales.R;
 
 public class FormularioActivity extends AppCompatActivity
 {
-
     private EditText etEspecie, etNombreCientifico;
     private Button btnGuardar, btnLimpiar;
     private Spinner spTipoAnimal;
     private Animal animalActual;
     private boolean esEdicion = false;
     private final String[] tiposAnimal =
-            {
-                    "Animal",
-                    "Mamifero",
-                    "Ave",
-                    "AveRapaz"
-            };
+    {
+        "Animal",
+        "Mamifero",
+        "Ave",
+        "AveRapaz"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
